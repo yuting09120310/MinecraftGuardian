@@ -21,6 +21,9 @@ namespace MinecraftGuardian
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 當按下「開始監控」按鈕時觸發的事件處理函式。
+        /// </summary>
         private void buttonStart_Click(object sender, EventArgs e)
         {
             if (!monitoring)
@@ -33,6 +36,9 @@ namespace MinecraftGuardian
             }
         }
 
+        /// <summary>
+        /// 當按下「停止監控」按鈕時觸發的事件處理函式。
+        /// </summary>
         private void buttonStop_Click(object sender, EventArgs e)
         {
             if (monitoring)
@@ -44,6 +50,9 @@ namespace MinecraftGuardian
             }
         }
 
+        /// <summary>
+        /// 監控進程的主要函式。
+        /// </summary>
         private async void MonitorProcess()
         {
             while (monitoring)
@@ -89,12 +98,18 @@ namespace MinecraftGuardian
             }
         }
 
+        /// <summary>
+        /// 檢查指定進程是否正在運行。
+        /// </summary>
         private bool IsProcessRunning(string processName)
         {
             Process[] processes = Process.GetProcessesByName(processName);
             return processes.Length > 0;
         }
 
+        /// <summary>
+        /// 啟動指定的進程。
+        /// </summary>
         private void StartProcess(string command)
         {
             try
@@ -113,14 +128,14 @@ namespace MinecraftGuardian
         }
 
         /// <summary>
-        /// 備份地圖
+        /// 備份地圖。
         /// </summary>
         private async Task BackupMapAsync()
         {
             try
             {
                 DateTime dateTime = DateTime.Now;
-                if ((dateTime.Hour == 0|| dateTime.Hour == 6 || dateTime.Hour == 12 || dateTime.Hour == 18) && dateTime.Minute == 0 && dateTime.Second == 0)
+                if ((dateTime.Hour == 0 || dateTime.Hour == 6 || dateTime.Hour == 12 || dateTime.Hour == 18) && dateTime.Minute == 0 && dateTime.Second == 0)
                 {
                     Invoke((MethodInvoker)delegate
                     {
