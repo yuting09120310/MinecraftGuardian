@@ -6,11 +6,11 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>img\images.ico</ApplicationIcon>
+    <ApplicationIcon>img\images-removebg.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="img\images.ico" />
+    <Content Include="img\images-removebg.ico" />
   </ItemGroup>
 
   <ItemGroup>
