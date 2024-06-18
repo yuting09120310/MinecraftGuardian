@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             labelStatus = new Label();
             buttonStart = new Button();
             buttonStop = new Button();
@@ -71,8 +72,9 @@
             Controls.Add(buttonStop);
             Controls.Add(buttonStart);
             Controls.Add(labelStatus);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
-            Text = "Form1";
+            Text = "Minecraft小工具";
             ResumeLayout(false);
             PerformLayout();
         }

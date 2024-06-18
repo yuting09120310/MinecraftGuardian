@@ -127,6 +127,8 @@ namespace MinecraftGuardian
             }
         }
 
+        private DateTime lastBackupTime = DateTime.MinValue;
+
         /// <summary>
         /// 備份地圖。
         /// </summary>
@@ -134,8 +136,11 @@ namespace MinecraftGuardian
         {
             try
             {
-                DateTime dateTime = DateTime.Now;
-                if ((dateTime.Hour == 0 || dateTime.Hour == 6 || dateTime.Hour == 12 || dateTime.Hour == 18) && dateTime.Minute == 0 && dateTime.Second == 0)
+                DateTime now = DateTime.Now;
+                bool shouldBackup = (now.Hour == 0 || now.Hour == 6 || now.Hour == 12 || now.Hour == 18) && (now.Minute == 0);
+                //bool shouldBackup = now.Minute == 0;
+
+                if (shouldBackup && now != lastBackupTime)
                 {
                     Invoke((MethodInvoker)delegate
                     {
@@ -143,7 +148,7 @@ namespace MinecraftGuardian
                     });
                     AppTools.Log("地圖備份開始", true);
 
-                    //取得所有進程
+                    // 取得所有進程
                     Process[] processes = Process.GetProcessesByName("java");
                     processes.ToList().ForEach(p =>
                     {
@@ -179,6 +184,8 @@ namespace MinecraftGuardian
                         labelStatus.Text = "地圖備份完成.";
                     });
                     AppTools.Log("地圖備份完成", true);
+
+                    lastBackupTime = now;
                 }
             }
             catch (Exception ex)
